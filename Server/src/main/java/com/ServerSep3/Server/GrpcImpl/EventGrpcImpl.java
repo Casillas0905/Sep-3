@@ -24,13 +24,13 @@ public class EventGrpcImpl extends EventsGrpc.EventsImplBase {
     public void findById(Event.EventIdRequest request, StreamObserver<Event.EventModel> responseObserver) {
         System.out.println("find by id");
         EventModel eventModel=service.findById(request.getId());
-        Event.EventModel reponse= Event.EventModel.newBuilder()
+        Event.EventModel response= Event.EventModel.newBuilder()
                 .setDescription(eventModel.getDescription())
                 .setTitle(eventModel.getTitle())
                 .setId(eventModel.getId())
                 .setMadeById(eventModel.getMadeById())
                 .build();
-        responseObserver.onNext(reponse);
+        responseObserver.onNext(response);
         responseObserver.onCompleted();
         System.out.println("Event returned");
     }

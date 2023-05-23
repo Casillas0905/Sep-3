@@ -40,7 +40,7 @@ public class MatchServiceImpl implements MatchService {
     @Override
     public void deleteMatch(long id) {
         matchRepository.deleteById(id);
-    }
+   }
 
     @Override
     public List<MatchModel> findByUserId(int id) {

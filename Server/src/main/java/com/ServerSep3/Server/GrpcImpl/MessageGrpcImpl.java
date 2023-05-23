@@ -9,6 +9,9 @@ import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @GRpcService
 public class MessageGrpcImpl extends MessagesGrpc.MessagesImplBase {
 
@@ -31,16 +34,40 @@ public class MessageGrpcImpl extends MessagesGrpc.MessagesImplBase {
 
     @Override
     public void findAllMessagesForAChat(Message.ChatIdRequested request, StreamObserver<Message.MessageModel> responseObserver) {
-        super.findAllMessagesForAChat(request, responseObserver);
+
+        System.out.println("find all messages");
+        List<MessageModel> list = service.findAllMessagesForAChat(request.getChatId());
+        List<Message.MessageModel> listGrpc = new ArrayList<>();
+        for (int i=0;i< list.size();i++){
+            Message.MessageModel messageModel = Message.MessageModel.newBuilder()
+                .setId(list.get(i).getId())
+                .setMessage(list.get(i).getMessage())
+                .setChatId(list.get(i).getChatId())
+                .setDate(list.get(i).getDate())
+                .setUserSentId(list.get(i).getUserSentId())
+                .build();
+            listGrpc.add(messageModel);
+        }
+        for (Message.MessageModel messageModel : listGrpc) {
+            responseObserver.onNext(messageModel);
+        }
+        responseObserver.onCompleted();
+        System.out.println("Messages send");
     }
 
     @Override
     public void saveMessage(Message.MessageModel request, StreamObserver<Message.MessageModel> responseObserver) {
-        super.saveMessage(request, responseObserver);
+        System.out.println("Save message");
+        service.saveMessage(new MessageModel(request.getId(), request.getUserSentId(), request.getChatId(), request.getDate(), request.getDate()));
+        responseObserver.onCompleted();
+        System.out.println("Message saved");
     }
 
     @Override
     public void deleteMessage(Message.MessageIdRequested request, StreamObserver<Message.MessageDeleted> responseObserver) {
-        super.deleteMessage(request, responseObserver);
+        System.out.println("deleting message");
+        service.deleteMessage((long) request.getId());
+        responseObserver.onCompleted();
+        System.out.println("Message deleted");
     }
 }
