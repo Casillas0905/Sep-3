@@ -13,7 +13,7 @@ service UserGrpc{
 }
 
 message UserModel {
-  string id = 1;
+  int32 id = 1;
   string username = 2;
   string password = 3;
   string email = 4;
@@ -34,7 +34,7 @@ message UserModel {
   string occupation = 19;
   string city = 20;
   string education = 21;
-  string drink = 22;
+  bool drink = 22;
   bool administrator = 23;
 }
 

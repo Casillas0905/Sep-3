@@ -3024,15 +3024,15 @@ public final class Message {
       "\001(\t\" \n\022MessageIdRequested\022\n\n\002id\030\001 \001(\005\"!\n" +
       "\017ChatIdRequested\022\016\n\006chatId\030\001 \001(\005\",\n\010Resp" +
       "onse\022\022\n\nmessageOut\030\001 \001(\t\022\014\n\004code\030\002 \001(\005\"\020" +
-      "\n\016MessageDeleted2\270\002\n\010Messages\022B\n\010findByI" +
-      "d\022\037.GrpcClasses.MessageIdRequested\032\025.Grp" +
-      "cClasses.Response\022T\n\027findAllMessagesForA" +
-      "Chat\022\034.GrpcClasses.ChatIdRequested\032\031.Grp" +
-      "cClasses.MessageModel0\001\022C\n\013saveMessage\022\031" +
-      ".GrpcClasses.MessageModel\032\031.GrpcClasses." +
-      "MessageModel\022M\n\rdeleteMessage\022\037.GrpcClas" +
-      "ses.MessageIdRequested\032\033.GrpcClasses.Mes" +
-      "sageDeletedb\006proto3"
+      "\n\016MessageDeleted2\274\002\n\010Messages\022F\n\010findByI" +
+      "d\022\037.GrpcClasses.MessageIdRequested\032\031.Grp" +
+      "cClasses.MessageModel\022T\n\027findAllMessages" +
+      "ForAChat\022\034.GrpcClasses.ChatIdRequested\032\031" +
+      ".GrpcClasses.MessageModel0\001\022C\n\013saveMessa" +
+      "ge\022\031.GrpcClasses.MessageModel\032\031.GrpcClas" +
+      "ses.MessageModel\022M\n\rdeleteMessage\022\037.Grpc" +
+      "Classes.MessageIdRequested\032\033.GrpcClasses" +
+      ".MessageDeletedb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

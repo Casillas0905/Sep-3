@@ -19,16 +19,10 @@ public final class User {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string id = 1;</code>
+     * <code>int32 id = 1;</code>
      * @return The id.
      */
-    java.lang.String getId();
-    /**
-     * <code>string id = 1;</code>
-     * @return The bytes for id.
-     */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    int getId();
 
     /**
      * <code>string username = 2;</code>
@@ -265,16 +259,10 @@ public final class User {
         getEducationBytes();
 
     /**
-     * <code>string drink = 22;</code>
+     * <code>bool drink = 22;</code>
      * @return The drink.
      */
-    java.lang.String getDrink();
-    /**
-     * <code>string drink = 22;</code>
-     * @return The bytes for drink.
-     */
-    com.google.protobuf.ByteString
-        getDrinkBytes();
+    boolean getDrink();
 
     /**
      * <code>bool administrator = 23;</code>
@@ -295,7 +283,6 @@ public final class User {
       super(builder);
     }
     private UserModel() {
-      id_ = "";
       username_ = "";
       password_ = "";
       email_ = "";
@@ -315,7 +302,6 @@ public final class User {
       occupation_ = "";
       city_ = "";
       education_ = "";
-      drink_ = "";
     }
 
     @java.lang.Override
@@ -348,10 +334,9 @@ public final class User {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
 
-              id_ = s;
+              id_ = input.readInt32();
               break;
             }
             case 18: {
@@ -473,10 +458,9 @@ public final class User {
               education_ = s;
               break;
             }
-            case 178: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 176: {
 
-              drink_ = s;
+              drink_ = input.readBool();
               break;
             }
             case 184: {
@@ -519,41 +503,14 @@ public final class User {
     }
 
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private int id_;
     /**
-     * <code>string id = 1;</code>
+     * <code>int32 id = 1;</code>
      * @return The id.
      */
     @java.lang.Override
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        id_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string id = 1;</code>
-     * @return The bytes for id.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        id_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getId() {
+      return id_;
     }
 
     public static final int USERNAME_FIELD_NUMBER = 2;
@@ -1290,41 +1247,14 @@ public final class User {
     }
 
     public static final int DRINK_FIELD_NUMBER = 22;
-    private volatile java.lang.Object drink_;
+    private boolean drink_;
     /**
-     * <code>string drink = 22;</code>
+     * <code>bool drink = 22;</code>
      * @return The drink.
      */
     @java.lang.Override
-    public java.lang.String getDrink() {
-      java.lang.Object ref = drink_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        drink_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string drink = 22;</code>
-     * @return The bytes for drink.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDrinkBytes() {
-      java.lang.Object ref = drink_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        drink_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public boolean getDrink() {
+      return drink_;
     }
 
     public static final int ADMINISTRATOR_FIELD_NUMBER = 23;
@@ -1352,8 +1282,8 @@ public final class User {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
@@ -1415,8 +1345,8 @@ public final class User {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(education_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 21, education_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(drink_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 22, drink_);
+      if (drink_ != false) {
+        output.writeBool(22, drink_);
       }
       if (administrator_ != false) {
         output.writeBool(23, administrator_);
@@ -1430,8 +1360,9 @@ public final class User {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
@@ -1494,8 +1425,9 @@ public final class User {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(education_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(21, education_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(drink_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(22, drink_);
+      if (drink_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(22, drink_);
       }
       if (administrator_ != false) {
         size += com.google.protobuf.CodedOutputStream
@@ -1516,8 +1448,8 @@ public final class User {
       }
       GrpcClasses.User.UserModel other = (GrpcClasses.User.UserModel) obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
+      if (getId()
+          != other.getId()) return false;
       if (!getUsername()
           .equals(other.getUsername())) return false;
       if (!getPassword()
@@ -1558,8 +1490,8 @@ public final class User {
           .equals(other.getCity())) return false;
       if (!getEducation()
           .equals(other.getEducation())) return false;
-      if (!getDrink()
-          .equals(other.getDrink())) return false;
+      if (getDrink()
+          != other.getDrink()) return false;
       if (getAdministrator()
           != other.getAdministrator()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -1574,7 +1506,7 @@ public final class User {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId().hashCode();
+      hash = (53 * hash) + getId();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
@@ -1616,7 +1548,8 @@ public final class User {
       hash = (37 * hash) + EDUCATION_FIELD_NUMBER;
       hash = (53 * hash) + getEducation().hashCode();
       hash = (37 * hash) + DRINK_FIELD_NUMBER;
-      hash = (53 * hash) + getDrink().hashCode();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDrink());
       hash = (37 * hash) + ADMINISTRATOR_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getAdministrator());
@@ -1753,7 +1686,7 @@ public final class User {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = "";
+        id_ = 0;
 
         username_ = "";
 
@@ -1795,7 +1728,7 @@ public final class User {
 
         education_ = "";
 
-        drink_ = "";
+        drink_ = false;
 
         administrator_ = false;
 
@@ -1896,9 +1829,8 @@ public final class User {
 
       public Builder mergeFrom(GrpcClasses.User.UserModel other) {
         if (other == GrpcClasses.User.UserModel.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
-          id_ = other.id_;
-          onChanged();
+        if (other.getId() != 0) {
+          setId(other.getId());
         }
         if (!other.getUsername().isEmpty()) {
           username_ = other.username_;
@@ -1979,9 +1911,8 @@ public final class User {
           education_ = other.education_;
           onChanged();
         }
-        if (!other.getDrink().isEmpty()) {
-          drink_ = other.drink_;
-          onChanged();
+        if (other.getDrink() != false) {
+          setDrink(other.getDrink());
         }
         if (other.getAdministrator() != false) {
           setAdministrator(other.getAdministrator());
@@ -2015,78 +1946,33 @@ public final class User {
         return this;
       }
 
-      private java.lang.Object id_ = "";
+      private int id_ ;
       /**
-       * <code>string id = 1;</code>
+       * <code>int32 id = 1;</code>
        * @return The id.
        */
-      public java.lang.String getId() {
-        java.lang.Object ref = id_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          id_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public int getId() {
+        return id_;
       }
       /**
-       * <code>string id = 1;</code>
-       * @return The bytes for id.
-       */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
-        java.lang.Object ref = id_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          id_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string id = 1;</code>
+       * <code>int32 id = 1;</code>
        * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setId(int value) {
+        
         id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>int32 id = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearId() {
         
-        id_ = getDefaultInstance().getId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string id = 1;</code>
-       * @param value The bytes for id to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        id_ = value;
+        id_ = 0;
         onChanged();
         return this;
       }
@@ -3566,78 +3452,33 @@ public final class User {
         return this;
       }
 
-      private java.lang.Object drink_ = "";
+      private boolean drink_ ;
       /**
-       * <code>string drink = 22;</code>
+       * <code>bool drink = 22;</code>
        * @return The drink.
        */
-      public java.lang.String getDrink() {
-        java.lang.Object ref = drink_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          drink_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public boolean getDrink() {
+        return drink_;
       }
       /**
-       * <code>string drink = 22;</code>
-       * @return The bytes for drink.
-       */
-      public com.google.protobuf.ByteString
-          getDrinkBytes() {
-        java.lang.Object ref = drink_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          drink_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string drink = 22;</code>
+       * <code>bool drink = 22;</code>
        * @param value The drink to set.
        * @return This builder for chaining.
        */
-      public Builder setDrink(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setDrink(boolean value) {
+        
         drink_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string drink = 22;</code>
+       * <code>bool drink = 22;</code>
        * @return This builder for chaining.
        */
       public Builder clearDrink() {
         
-        drink_ = getDefaultInstance().getDrink();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string drink = 22;</code>
-       * @param value The bytes for drink to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDrinkBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        drink_ = value;
+        drink_ = false;
         onChanged();
         return this;
       }
@@ -5810,7 +5651,7 @@ public final class User {
   static {
     java.lang.String[] descriptorData = {
       "\n\nUser.proto\022\013GrpcClasses\"\243\003\n\tUserModel\022" +
-      "\n\n\002id\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\022\020\n\010passwor" +
+      "\n\n\002id\030\001 \001(\005\022\020\n\010username\030\002 \001(\t\022\020\n\010passwor" +
       "d\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022\022\n\nfirst_name\030\005 \001" +
       "(\t\022\021\n\tlast_name\030\006 \001(\t\022\020\n\010birthday\030\007 \001(\t\022" +
       "\023\n\013description\030\010 \001(\t\022\031\n\021number_of_matche" +
@@ -5819,7 +5660,7 @@ public final class User {
       "\016 \001(\t\022\016\n\006photo5\030\017 \001(\t\022\016\n\006gender\030\020 \001(\t\022\022\n" +
       "\npreference\030\021 \001(\t\022\021\n\thoroscope\030\022 \001(\t\022\022\n\n" +
       "occupation\030\023 \001(\t\022\014\n\004city\030\024 \001(\t\022\021\n\teducat" +
-      "ion\030\025 \001(\t\022\r\n\005drink\030\026 \001(\t\022\025\n\radministrato" +
+      "ion\030\025 \001(\t\022\r\n\005drink\030\026 \001(\010\022\025\n\radministrato" +
       "r\030\027 \001(\010\"\025\n\007GetById\022\n\n\002id\030\001 \001(\005\"!\n\rGetByU" +
       "sername\022\020\n\010username\030\001 \001(\t\"\035\n\013GetByGender" +
       "\022\016\n\006gender\030\001 \001(\t\"\007\n\005Empty2\307\003\n\010UserGrpc\022<" +

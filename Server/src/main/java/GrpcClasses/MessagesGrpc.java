@@ -15,28 +15,28 @@ public final class MessagesGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<GrpcClasses.Message.MessageIdRequested,
-      GrpcClasses.Message.Response> getFindByIdMethod;
+      GrpcClasses.Message.MessageModel> getFindByIdMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "findById",
       requestType = GrpcClasses.Message.MessageIdRequested.class,
-      responseType = GrpcClasses.Message.Response.class,
+      responseType = GrpcClasses.Message.MessageModel.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<GrpcClasses.Message.MessageIdRequested,
-      GrpcClasses.Message.Response> getFindByIdMethod() {
-    io.grpc.MethodDescriptor<GrpcClasses.Message.MessageIdRequested, GrpcClasses.Message.Response> getFindByIdMethod;
+      GrpcClasses.Message.MessageModel> getFindByIdMethod() {
+    io.grpc.MethodDescriptor<GrpcClasses.Message.MessageIdRequested, GrpcClasses.Message.MessageModel> getFindByIdMethod;
     if ((getFindByIdMethod = MessagesGrpc.getFindByIdMethod) == null) {
       synchronized (MessagesGrpc.class) {
         if ((getFindByIdMethod = MessagesGrpc.getFindByIdMethod) == null) {
           MessagesGrpc.getFindByIdMethod = getFindByIdMethod =
-              io.grpc.MethodDescriptor.<GrpcClasses.Message.MessageIdRequested, GrpcClasses.Message.Response>newBuilder()
+              io.grpc.MethodDescriptor.<GrpcClasses.Message.MessageIdRequested, GrpcClasses.Message.MessageModel>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findById"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   GrpcClasses.Message.MessageIdRequested.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  GrpcClasses.Message.Response.getDefaultInstance()))
+                  GrpcClasses.Message.MessageModel.getDefaultInstance()))
               .setSchemaDescriptor(new MessagesMethodDescriptorSupplier("findById"))
               .build();
         }
@@ -189,7 +189,7 @@ public final class MessagesGrpc {
     /**
      */
     public void findById(GrpcClasses.Message.MessageIdRequested request,
-        io.grpc.stub.StreamObserver<GrpcClasses.Message.Response> responseObserver) {
+        io.grpc.stub.StreamObserver<GrpcClasses.Message.MessageModel> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFindByIdMethod(), responseObserver);
     }
 
@@ -221,7 +221,7 @@ public final class MessagesGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 GrpcClasses.Message.MessageIdRequested,
-                GrpcClasses.Message.Response>(
+                GrpcClasses.Message.MessageModel>(
                   this, METHODID_FIND_BY_ID)))
           .addMethod(
             getFindAllMessagesForAChatMethod(),
@@ -265,7 +265,7 @@ public final class MessagesGrpc {
     /**
      */
     public void findById(GrpcClasses.Message.MessageIdRequested request,
-        io.grpc.stub.StreamObserver<GrpcClasses.Message.Response> responseObserver) {
+        io.grpc.stub.StreamObserver<GrpcClasses.Message.MessageModel> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getFindByIdMethod(), getCallOptions()), request, responseObserver);
     }
@@ -311,7 +311,7 @@ public final class MessagesGrpc {
 
     /**
      */
-    public GrpcClasses.Message.Response findById(GrpcClasses.Message.MessageIdRequested request) {
+    public GrpcClasses.Message.MessageModel findById(GrpcClasses.Message.MessageIdRequested request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getFindByIdMethod(), getCallOptions(), request);
     }
@@ -355,7 +355,7 @@ public final class MessagesGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<GrpcClasses.Message.Response> findById(
+    public com.google.common.util.concurrent.ListenableFuture<GrpcClasses.Message.MessageModel> findById(
         GrpcClasses.Message.MessageIdRequested request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getFindByIdMethod(), getCallOptions()), request);
@@ -402,7 +402,7 @@ public final class MessagesGrpc {
       switch (methodId) {
         case METHODID_FIND_BY_ID:
           serviceImpl.findById((GrpcClasses.Message.MessageIdRequested) request,
-              (io.grpc.stub.StreamObserver<GrpcClasses.Message.Response>) responseObserver);
+              (io.grpc.stub.StreamObserver<GrpcClasses.Message.MessageModel>) responseObserver);
           break;
         case METHODID_FIND_ALL_MESSAGES_FOR_ACHAT:
           serviceImpl.findAllMessagesForAChat((GrpcClasses.Message.ChatIdRequested) request,
